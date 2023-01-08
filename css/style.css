@@ -1,0 +1,10 @@
+.image{
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.game-canvas {
+  display: block;
+  margin: auto;
+}
