@@ -22,7 +22,7 @@ function checkCollision() {
     if (
       player.x < obstacle.x + obstacle.width &&
       player.x + player.width > obstacle.x &&
-      player.y < obstacle.y + obstacle.height && 
+      player.y < obstacle.y + obstacle.height &&
       player.y + player.height > obstacle.y
     ) {
       gameOver = true;

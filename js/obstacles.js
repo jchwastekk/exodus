@@ -101,7 +101,7 @@ function updateObstacles() {
   }
 
   for (const obstacle of obstacles) {
-    obstacle.speed =  level;
+    obstacle.speed =  level/2;
   }
 }
 }

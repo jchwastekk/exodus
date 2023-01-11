@@ -12,7 +12,7 @@ for (let i = 1; i <= 5; i++) {
 
 const playerImages = [];
 
-for (let i = 1; i <= 4; i++) {
+for (let i = 1; i <= 7; i++) {
   playerImages.push(`img/player/player-${i}.png`);
 }
 

@@ -43,6 +43,7 @@ function drawCharacterSelection() {
 }
 
 
+
 function drawPlayer() {
   const ctx = canvas.getContext('2d');
   const playerImage = new Image();
