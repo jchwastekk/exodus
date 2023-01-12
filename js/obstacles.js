@@ -3,10 +3,22 @@ import { canvas } from './app.js';
 import { score } from './score.js';
 import { gameOver } from './gameover.js';
 import { obstacleImages, getRandomObstacleImage } from './images.js';
+import Howler from 'howler';
 
 const obstacles = [];
 
+const speedupSound = new Howler.Howl({
+    src: ['sounds/level/speedup.mp3'],
+});
+
+const enemiesSound = new Howler.Howl({
+    src: ['sounds/enemies/enemy-1.mp3'],
+});
+
+const uniqueObstacleImages = new Set();
+
 let level = 1;
+
 
 function createObstacle() {
   const startX = Math.random() * canvas.width;
@@ -15,11 +27,11 @@ function createObstacle() {
   let directionY = 0;
 
   let obstacleImage;
-  if (level <= 5) {
+  if (level <= 2) {
     obstacleImage = 'obstacle-1';
-  } else if (level <= 10) {
+  } else if (level <= 4) {
     obstacleImage = Math.random() < 0.5 ? 'obstacle-1' : 'obstacle-2';
-  } else if (level <= 15) {
+  } else if (level <= 6) {
     obstacleImage = Math.random() < 0.5 ? 'obstacle-2' : 'obstacle-3';
   } else if (level <= 20) {
     obstacleImage = Math.random() < 0.5 ? 'obstacle-3' : 'obstacle-4';
@@ -75,6 +87,12 @@ function createObstacle() {
     },
   };
   obstacles.push(obstacle);
+  if (obstacleImage !== 'obstacle-1' && !uniqueObstacleImages.has(obstacleImage)) {
+      enemiesSound.play();
+      uniqueObstacleImages.add(obstacleImage);
+  }
+
+
 }
 
 
@@ -88,6 +106,7 @@ function updateObstacles() {
     if (obstacle.x + obstacle.width < 0 || obstacle.x > canvas.width || obstacle.y + obstacle.height < 0 || obstacle.y > canvas.height) {
       const index = obstacles.indexOf(obstacle);
       obstacles.splice(index, 1);
+
     }
   }
 
@@ -95,9 +114,11 @@ function updateObstacles() {
 
   if (gameOver === true) {
     level = 1;
+    uniqueObstacleImages.clear();
   } else {
   if (currentLevel > level) {
     level = currentLevel;
+    speedupSound.play();
   }
 
   for (const obstacle of obstacles) {

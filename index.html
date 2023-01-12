@@ -14,6 +14,10 @@
     <canvas id="game"class="game-canvas" width="800" height="400"></canvas>
     <div id="leaderboard"></div>
 
-    <script type="module" src="/js/app.js"></script>
+    <script>
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+    </script>
+    <script src="js/bundle.js"></script>
   </body>
 </html>

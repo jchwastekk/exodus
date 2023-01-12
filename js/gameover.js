@@ -2,6 +2,16 @@ import { canvas } from './app.js';
 import { player } from './player.js';
 import { obstacles } from './obstacles.js';
 import { score } from './score.js';
+import Howler from 'howler';
+
+
+
+
+const gameOverSound = new Howler.Howl({
+    src: ['sounds/level/gameover.mp3'],
+    volume: 0.25,
+    loop: false
+});
 
 let gameOver = false;
 
@@ -15,6 +25,7 @@ function drawGameOver() {
   ctx.fillText('Press double SPACE to start again', canvas.width / 2, canvas.height / 2 + 30);
   ctx.font = '16px Arial';
   ctx.fillText(`Score: ${score}`, canvas.width / 2, canvas.height / 2 + 60);
+  gameOverSound.play();
 }
 
 function checkCollision() {

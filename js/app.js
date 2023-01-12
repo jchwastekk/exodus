@@ -3,10 +3,13 @@ import { platform, drawPlatform } from './platform.js';
 import { obstacles, createObstacle, updateObstacles, drawObstacles, drawObstacleSpeed } from './obstacles.js';
 import { score, drawScore, updateScore } from './score.js';
 import { gameOver, drawGameOver, checkCollision, resetGame } from './gameover.js';
-import { drawFirstScreen,drawStartScreen } from './start.js';
+import { backgroundSound,drawFirstScreen,drawStartScreen } from './start.js';
 import { drawPauseScreen } from './pause.js';
 import { drawLevel } from './level.js';
 import { getRandomBackgroundImage } from './images.js';
+import Howler from 'howler';
+
+
 
 export const keys = {
 ArrowUp: false,

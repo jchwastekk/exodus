@@ -1,13 +1,6 @@
-import {
-  canvas,
-  keys
-} from './app.js';
-import {
-  playerImages
-} from './images.js';
-import {
-  drawFirstScreen
-} from './start.js';
+import {canvas, keys} from './app.js';
+import {playerImages} from './images.js';
+import {drawFirstScreen} from './start.js';
 
 const player = {
   x: 0,
@@ -29,18 +22,20 @@ function drawCharacterSelection() {
   }
 
 
+
   canvas.addEventListener('click', (event) => {
     const x = event.clientX - canvas.offsetLeft;
     const y = event.clientY - canvas.offsetTop;
 
-
     for (let i = 0; i < playerImages.length; i++) {
       if (x > 50 + i * 100 && x < 125 + i * 100 && y > 50 && y < 125) {
         player.image = playerImages[i];
+
       }
     }
   });
 }
+
 
 
 
